@@ -112,7 +112,7 @@ const Login = () => {
             />
           </div>
           <div className="flex justify-between items-center text-sm md:text-base">
-            <Link className="text-blue-600 hover:underline" href="https://back-money-8ciw45doi-ahmed3mr5.vercel.app/password/forgot-password">
+            <Link className="text-blue-600 hover:underline" href="https://backtasks.vercel.app/password/forgot-password">
               Forgot Password?
             </Link>
             <Link className="text-blue-600 hover:underline" href="register">
