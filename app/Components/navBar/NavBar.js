@@ -1,18 +1,57 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react"; // مكتبة أيقونات Lucide
+import Link from "next/link";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 const NavBar = () => {
   const router = useRouter();
   const [profile, setProfile] = useState(null);
   const [tokenExists, setTokenExists] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [token, setToken] = useState(null);  // إضافة حالة لتخزين التوكن
+  const [token, setToken] = useState(null);
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+
+    if (newTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  useEffect(() => {
+    const currentToken = Cookies.get("token");
+    setToken(currentToken);
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      setTokenExists(true);
+      fetchUser();
+    } else {
+      setTokenExists(false);
+      setProfile(null);
+    }
+  }, [token]);
 
   const fetchUser = async () => {
-    if (!token) return; // إذا لم يوجد توكن، لا يتم تنفيذ العملية
+    if (!token) return;
     try {
       setLoading(true);
       const res = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN}/api/profile/me`, {
@@ -31,26 +70,11 @@ const NavBar = () => {
     }
   };
 
-  useEffect(() => {
-    const currentToken = Cookies.get("token");
-    setToken(currentToken);  // تحديث حالة التوكن
-  }, []);
-
-  useEffect(() => {
-    if (token) {
-      setTokenExists(true);
-      fetchUser();
-    } else {
-      setTokenExists(false);
-      setProfile(null); // إذا لم يوجد توكن، تأكد من إعادة تعيين الملف الشخصي
-    }
-  }, [token]);  // مراقبة التغيير في التوكن
-
   const handleLogout = () => {
     Cookies.remove("token");
     setProfile(null);
     setTokenExists(false);
-    setToken(null);  // إعادة تعيين التوكن
+    setToken(null);
     router.push("/auth/login");
   };
 
@@ -71,28 +95,43 @@ const NavBar = () => {
           </div>
         </h2>
 
-        <div className="absolute left-0 bg-gray-700 p-4 rounded-md  opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-          <p className="text-white text-sm mb-1">MyAccount</p>
-          <p className="text-white mb-1">Option2</p>
-          <p className="text-white mb-1">Option3</p>
-          {profile?.isAdmin === true && (
-            <p className="text-white cursor-pointer mb-1 bg-green-500 p-1 rounded">
+        <div className="absolute left-0 bg-gray-700 p-4 rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+          <Link href="/Components/profile/update" className="text-white my-1 hover:bg-slate-600 bg-slate-500 p-1 rounded w-full">
+            Account
+          </Link>
+          <p className="text-white my-1 hover:bg-slate-600 bg-slate-500 p-1 rounded">Option2</p>
+          <p className="text-white my-1 hover:bg-slate-600 bg-slate-500 p-1 rounded cursor-pointer">Settings</p>
+          {profile?.isAdmin && (
+            <p className="text-white cursor-pointer my-1 hover:bg-slate-600 bg-slate-500 p-1 rounded">
               Dashboard
             </p>
           )}
           <p
             onClick={handleLogout}
-            className="text-white mb-1 text-center bg-red-500 p-1 rounded cursor-pointer"
+            className="text-white my-1 text-center hover:bg-red-600 bg-red-500 p-1 rounded cursor-pointer"
           >
             Logout
           </p>
         </div>
       </div>
 
-      <ul className="flex gap-3 text-white">
-        <li className="cursor-pointer hover:underline hover:text-blue-500"><Link href="/">Home</Link></li>
+      <ul className="flex gap-3 text-white items-center">
+        <li className="cursor-pointer hover:underline hover:text-blue-500">
+          <Link href="/">Home</Link>
+        </li>
         <li className="cursor-pointer">About</li>
-        <li className="cursor-pointer">Contact</li>
+        
+        {/* زر الوضع الداكن بتصميم انسيابي */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-full bg-gray-300 dark:bg-gray-700 shadow-md transition-all duration-300 hover:scale-110 flex items-center justify-center"
+        >
+          {theme === "light" ? (
+            <Moon className="w-5 h-5 text-gray-900" />
+          ) : (
+            <Sun className="w-5 h-5 text-yellow-400" />
+          )}
+        </button>
       </ul>
     </nav>
   );

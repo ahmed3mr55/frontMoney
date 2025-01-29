@@ -44,7 +44,7 @@ const Page = async ({ params }) => {
   } = data;
 
   return (
-    <div className="max-w-lg mx-auto border border-gray-300 rounded-lg overflow-hidden font-sans shadow-md mt-10">
+    <div className="max-w-lg mx-auto border border-gray-300 rounded-lg overflow-hidden font-sans shadow-md mt-10 dark:bg-white">
       <div className="bg-green-500 text-white text-center p-5">
         <h1 className="text-2xl font-bold">Money Transfer Successful!</h1>
         <p className="text-lg">Transaction Description: {description}</p>

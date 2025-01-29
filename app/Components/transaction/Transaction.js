@@ -52,43 +52,43 @@ const Transaction = ({ show }) => {
       {loading && <p>Loading...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4 overflow-hidden">
         {displayedTransactions.length > 0 ? (
           displayedTransactions.map((transaction) => (
             <Link
               href={`/Components/transaction/${transaction._id}`}
               key={transaction._id}
-              className="bg-white shadow-md rounded-lg p-4 border border-gray-200"
+              className="bg-white shadow-md rounded-lg p-4 border border-gray-200 overflow-hidden dark:bg-gray-800 dark:border-gray-700"
             >
-              <p className="text-gray-700 font-bold mb-2">
+              <p className="text-gray-700 font-bold mb-2 dark:text-slate-200">
                 Sender:{" "}
-                <span className="text-gray-900">
+                <span className="text-gray-900 dark:text-slate-100">
                   {transaction.senderUsername}
                 </span>
               </p>
-              <p className="text-gray-700 font-bold mb-2">
+              <p className="text-gray-700 font-bold mb-2 dark:text-slate-200">
                 Receiver:{" "}
-                <span className="text-gray-900">
+                <span className="text-gray-900 dark:text-white">
                   {transaction.receiverUsername}
                 </span>
               </p>
-              <p className="text-gray-700 font-bold mb-2">
+              <p className="text-gray-700 font-bold mb-2 dark:text-slate-200">
                 Amount:{" "}
-                <span className="text-green-500">
+                <span className="text-green-500 dark:text-green-400">
                   {transaction.amount.toLocaleString()} EGP
                 </span>
               </p>
-              <p className="text-gray-700 font-bold mb-2">
+              <p className="text-gray-700 font-bold mb-2 dark:text-slate-200">
                 Transaction Number:{" "}
-                <span className="text-green-500">
+                <span className="text-green-500 dark:text-green-400">
                   {transaction._id.toLocaleString()}
                 </span>
               </p>
-              <p className="text-gray-700 font-bold mb-2">
+              <p className="text-gray-700 font-bold mb-2 dark:text-slate-200">
                 status:{" "}
-                <span className="text-green-500">{transaction.status}</span>
+                <span className="text-green-500 dark:text-green-400">{transaction.status}</span>
               </p>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-500 text-sm dark:text-slate-400">
                 Date: {new Date(transaction.date).toLocaleString()}
               </p>
             </Link>

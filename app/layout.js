@@ -18,15 +18,14 @@ export const metadata = {
 };
 
 // هذه الدالة الآن سيتم تنفيذها في الخادم باستخدام Server Component
-export default async function RootLayout({ children }) {
+export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased mt-20 `}
-      >
+    <html className="dark" lang="en">
+      <body className="bg-white  text-black dark:bg-gray-900 dark:text-white mt-20">
         <NavBar />
         {children}
       </body>
     </html>
   );
 }
+

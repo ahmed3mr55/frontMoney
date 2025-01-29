@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+   // يفعّل الوضع الداكن بناءً على class
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,8 +14,9 @@ export default {
         md: "750px",
         lg: "976px",
         xl: "1440px",
-      }
+      },
     },
   },
+  darkMode: 'class',
   plugins: [],
 };

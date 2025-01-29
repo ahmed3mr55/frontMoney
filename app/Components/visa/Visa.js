@@ -40,8 +40,8 @@ const Visa = () => {
   }, [token, router]);
 
   return (
-    <div className="flex justify-center items-center bg-gray-100">
-      <div className="w-full max-w-md sm:max-w-sm md:max-w-lg lg:max-w-xl xl:max-w-2xl h-48 bg-gradient-to-r from-purple-600 via-blue-500 to-teal-400 rounded-lg shadow-xl flex justify-between p-6 text-white">
+    <div className="flex justify-center items-center">
+      <div className="w-full max-w-md sm:max-w-sm md:max-w-lg lg:max-w-xl xl:max-w-2xl h-48 bg-purple-600  rounded-lg shadow-xl flex justify-between p-6 text-white dark:bg-slate-800 ">
         <div className="flex flex-col justify-between w-full">
           <div>
             <h3 className="text-xl font-semibold mb-2">
