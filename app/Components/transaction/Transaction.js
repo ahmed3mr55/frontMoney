@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import Link from "next/link";
+import io from "socket.io-client";
 
 const Transaction = ({ show }) => {
   const [transactions, setTransactions] = useState([]);
@@ -9,36 +10,37 @@ const Transaction = ({ show }) => {
   const [error, setError] = useState(null);
   const token = Cookies.get("token");
 
-  const fetchTransactions = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_DOMAIN}/api/transfer/transfermony`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch transactions");
-      }
-
-      const data = await response.json();
-      setTransactions(data);
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchTransactions = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_DOMAIN}/api/transfer/transfermony`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch transactions");
+        }
+
+        const data = await response.json();
+        setTransactions(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchTransactions();
-  }, []);
+  }, [token]);
+
 
   // تحديد عدد المعاملات المعروضة بناءً على قيمة show
   const displayedTransactions = show

@@ -4,6 +4,9 @@ import { Moon, Sun } from "lucide-react"; // مكتبة أيقونات Lucide
 import Link from "next/link";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import io from "socket.io-client";
+
+const socket = io("http://localhost:5000");
 
 const NavBar = () => {
   const router = useRouter();
@@ -44,10 +47,16 @@ const NavBar = () => {
     if (token) {
       setTokenExists(true);
       fetchUser();
+      socket.on(`userUpdate:${profile?._id}`, (updatedUser) => {
+        setProfile(updatedUser);
+      });
     } else {
       setTokenExists(false);
       setProfile(null);
     }
+    return () => {
+      socket.off(`userUpdate:${profile?._id}`);
+    };
   }, [token]);
 
   const fetchUser = async () => {
@@ -102,9 +111,9 @@ const NavBar = () => {
           <p className="text-white my-1 hover:bg-slate-600 bg-slate-500 p-1 rounded">Option2</p>
           <p className="text-white my-1 hover:bg-slate-600 bg-slate-500 p-1 rounded cursor-pointer">Settings</p>
           {profile?.isAdmin && (
-            <p className="text-white cursor-pointer my-1 hover:bg-slate-600 bg-slate-500 p-1 rounded">
+            <Link href="/admin/dashboard" className="text-white cursor-pointer my-1 hover:bg-slate-600 bg-slate-500 p-1 rounded">
               Dashboard
-            </p>
+            </Link>
           )}
           <p
             onClick={handleLogout}
@@ -121,7 +130,6 @@ const NavBar = () => {
         </li>
         <li className="cursor-pointer">About</li>
         
-        {/* زر الوضع الداكن بتصميم انسيابي */}
         <button
           onClick={toggleTheme}
           className="p-2 rounded-full bg-gray-300 dark:bg-gray-700 shadow-md transition-all duration-300 hover:scale-110 flex items-center justify-center"

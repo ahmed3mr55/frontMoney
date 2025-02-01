@@ -22,6 +22,8 @@ const Transfer = ({ onTransferSuccess }) => {
         }
     });
 
+    
+
     useEffect(() => {
         if(success){
             const timer = setTimeout(() => {

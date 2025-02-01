@@ -8,12 +8,19 @@ import Money from "./Components/money/Money";
 import Visa from "./Components/visa/Visa";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [balance, setBalance] = useState(null);
+  const token = Cookies.get("token");
+  const router = useRouter();
+  useEffect(() => {
+    if (!token) {
+      router.push("/auth/login");
+    }
+  }, []);
   const updateBalance = async () => {
     try {
-      const token = Cookies.get("token");
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_DOMAIN}/api/profile/balance`,
         {
@@ -53,7 +60,7 @@ export default function Home() {
       </div>
       <div className=" text-white flex justify-center items-center flex-col w-4/5   m-auto rounded-md dark:bg-slate-800  bg-purple-600 mt-5">
         <Transaction show="2" />
-        <h4 className="text-center font-bold cursor-pointer p-5">See more</h4>
+        <Link href="/Components/transaction" className="text-center font-bold cursor-pointer p-5 hover:bg-slate-600 rounded">See more</Link>
       </div>
     </div>
   );

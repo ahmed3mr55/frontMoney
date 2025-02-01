@@ -52,25 +52,25 @@ const Transactions = () => {
           transactions.map((transaction) => (
             <div
               key={transaction._id}
-              className="bg-white shadow-md rounded-lg p-4 border border-gray-200"
+              className="bg-white shadow-md rounded-lg p-4 border border-gray-200 dark:bg-gray-800 dark:border-gray-700 "
             >
-              <p className="text-gray-700 font-bold mb-2">
+              <p className="text-gray-700 font-bold mb-2 dark:text-gray-200">
                 Amount:{" "}
-                <span className="text-green-500">
+                <span className="text-green-500 dark:text-white">
                   {transaction.amount.toLocaleString()} EGP
                 </span>
               </p>
-              <p className="text-gray-700 font-bold mb-2">
+              <p className="text-gray-700 font-bold mb-2 dark:text-gray-200">
                 Transaction ID:{" "}
-                <span className="text-green-500">
+                <span className="text-green-500 dark:text-white">
                   {transaction._id.toLocaleString()}
                 </span>
               </p>
-              <p className="text-gray-700 font-bold mb-2">
+              <p className="text-gray-700 font-bold mb-2 dark:text-gray-200">
                 status:{" "}
-                <span className="text-green-500">{transaction.status}</span>
+                <span className="text-green-500 dark:text-white">{transaction.status}</span>
               </p>
-              <p className="text-gray-500 text-sm">
+              <p className="text-gray-500 text-sm ">
                 Date: {new Date(transaction.date).toLocaleString()}
               </p>
             </div>
