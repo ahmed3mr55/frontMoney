@@ -3,6 +3,7 @@ import Visa from "./Visa";
 import DeleteBtn from "./DeleteBtn";
 import Transactions from "./transactions/Transactions";
 import ActiveBtn from "./ActiveBtn";
+import PayWithVisa from "./PayWithVisa";
 
 
 const page = async () => {
@@ -15,6 +16,9 @@ const page = async () => {
         </div>
         <div className="mr-3">
           <ActiveBtn />
+        </div>
+        <div>
+          <PayWithVisa />
         </div>
       </div>
       <div className="w-full flex justify-center items-center">

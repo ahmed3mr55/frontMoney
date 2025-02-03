@@ -82,13 +82,13 @@ const Login = () => {
           <div className="loader w-16 h-16 border-4 border-t-4 border-gray-300 rounded-full animate-spin"></div>
         </div>
       )}
-      <div className="w-full max-w-md bg-slate-300 rounded-md p-8 shadow-lg">
+      <div className="w-full max-w-md bg-slate-300 rounded-md p-8 shadow-lg dark:bg-slate-800">
         <h2 className="font-bold text-2xl md:text-3xl text-center pb-6">Login Page</h2>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <div className="flex flex-col">
             <label className="font-bold text-base md:text-lg">Email</label>
             <input
-              className="p-2 border border-gray-400 rounded-md"
+              className="p-2 border border-gray-400 rounded-md dark:bg-slate-600"
               id="email"
               name="email"
               type="email"
@@ -101,7 +101,7 @@ const Login = () => {
           <div className="flex flex-col">
             <label className="font-bold text-base md:text-lg">Password</label>
             <input
-              className="p-2 border border-gray-400 rounded-md"
+              className="p-2 border border-gray-400 rounded-md dark:bg-slate-600"
               id="password"
               name="password"
               type="text"

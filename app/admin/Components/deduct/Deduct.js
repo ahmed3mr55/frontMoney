@@ -3,35 +3,35 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 
-const Deposit = ({ onClose }) => {
+const Deduct = ({ onClose }) => {
   const token = Cookies.get("token");
-  const [amount, setAmount] = useState("");
+  const [deduct, setDeduct] = useState("");
   const [username, setUsername] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const confirmDeposit = async () => {
+  const confirmDeduct = async () => {
     setShowConfirmation(false);
     setLoading(true);
     try {
       const req = await fetch(
-        `${process.env.NEXT_PUBLIC_DOMAIN}/api/admin/transactions/deposit`,
+        `${process.env.NEXT_PUBLIC_DOMAIN}/api/admin/transactions/deduct`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ amount: Number(amount), username }),
+          body: JSON.stringify({ deduct: Number(deduct), username }),
         }
       );
       const data = await req.json();
       if (req.ok) {
         setSuccess(true);
         setError(null);
-        setAmount("");
+        setDeduct("");
         setUsername("");
       } else {
         setError(data.message || "An error occurred");
@@ -60,7 +60,7 @@ const Deposit = ({ onClose }) => {
     }
   });
 
-  const handleDeposit = (e) => {
+  const handleDeduct = (e) => {
     e.preventDefault();
     setShowConfirmation(true);
   };
@@ -71,7 +71,7 @@ const Deposit = ({ onClose }) => {
           className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
           role="alert"
         >
-          <span className="block sm:inline">Deposit successful</span>
+          <span className="block sm:inline">Deduct successful</span>
         </div>
       )}
       {error && (
@@ -93,18 +93,18 @@ const Deposit = ({ onClose }) => {
 
       <div className="bg-white dark:bg-gray-800 shadow-xl rounded-lg p-8 flex flex-col gap-6 w-full md:flex-row md:items-center md:justify-between max-w-3xl mx-auto">
         <h2 className="text-2xl font-bold text-gray-800 text-center md:text-left dark:text-white">
-          Deposit Money
+          Deduct Money
         </h2>
         <form
           className="flex flex-wrap gap-4 w-full md:flex-row md:gap-6 items-center justify-center"
-          onSubmit={handleDeposit}
+          onSubmit={handleDeduct}
         >
           <input
             className="flex-1 border border-gray-300 px-6 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:bg-gray-700 dark:text-white"
             type="number"
-            placeholder="Amount (EGP)"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            placeholder="Deduct (EGP)"
+            value={deduct}
+            onChange={(e) => setDeduct(e.target.value)}
           />
           <input
             className="flex-1 border border-gray-300 px-6 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all dark:bg-gray-700 dark:text-white"
@@ -117,7 +117,7 @@ const Deposit = ({ onClose }) => {
             className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-md transition-all duration-300 dark:bg-blue-600 dark:hover:bg-blue-700"
             type="submit"
           >
-            Deposit
+            Deduct
           </button>
           <div className="w-full md:w-auto flex justify-center">
             <div
@@ -134,10 +134,10 @@ const Deposit = ({ onClose }) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center dark:bg-opacity-50 z-30">
           <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md dark:bg-gray-800 z-40 ">
             <h2 className="text-xl font-bold mb-4 text-gray-800 dark:text-white">
-              Confirm Deposit
+              Confirm Deduct
             </h2>
             <p className="text-lg mb-4 text-gray-600 dark:text-gray-300">
-              Are you sure you want to Deposit <strong>{amount} EGP</strong> to{" "}
+              Are you sure you want to Deduct <strong>{deduct} EGP</strong> to{" "}
               <strong>{username}</strong>?
             </p>
             <div className="flex justify-end gap-6">
@@ -149,7 +149,7 @@ const Deposit = ({ onClose }) => {
               </button>
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
-                onClick={confirmDeposit}
+                onClick={confirmDeduct}
               >
                 Confirm
               </button>
@@ -161,4 +161,4 @@ const Deposit = ({ onClose }) => {
   );
 };
 
-export default Deposit;
+export default Deduct;

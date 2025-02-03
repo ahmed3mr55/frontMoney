@@ -29,7 +29,7 @@ const Register = () => {
       if (Cookies.get("token")) {
         router.push("/");
       }
-    },[]);
+    }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,7 +81,7 @@ const Register = () => {
           <div className="loader w-16 h-16 border-4 border-t-4 border-gray-300 rounded-full animate-spin"></div>
         </div>
       )}
-      <div className="w-full max-w-2xl bg-slate-300 rounded-md p-8">
+      <div className="w-full max-w-2xl bg-slate-300 rounded-md p-8 dark:bg-slate-800">
         <h2 className="font-bold text-2xl md:text-3xl text-center pb-6">
           Register Page
         </h2>
@@ -92,7 +92,7 @@ const Register = () => {
                 First Name
               </label>
               <input
-                className="p-2 border border-gray-400 rounded-md"
+                className="p-2 border border-gray-400 rounded-md dark:bg-slate-800"
                 id="firstName"
                 name="firstName"
                 type="text"
@@ -107,7 +107,7 @@ const Register = () => {
                 Last Name
               </label>
               <input
-                className="p-2 border border-gray-400 rounded-md"
+                className="p-2 border border-gray-400 rounded-md dark:bg-slate-800"
                 id="lastName"
                 name="lastName"
                 type="text"
@@ -123,7 +123,7 @@ const Register = () => {
             <div className="flex flex-col">
               <label className="font-bold text-base md:text-lg">Email</label>
               <input
-                className="p-2 border border-gray-400 rounded-md"
+                className="p-2 border border-gray-400 rounded-md dark:bg-slate-800"
                 id="email"
                 name="email"
                 type="email"
@@ -136,7 +136,7 @@ const Register = () => {
             <div className="flex flex-col">
               <label className="font-bold text-base md:text-lg">Password</label>
               <input
-                className="p-2 border border-gray-400 rounded-md"
+                className="p-2 border border-gray-400 rounded-md dark:bg-slate-800"
                 id="password"
                 name="password"
                 type="password"
@@ -152,7 +152,7 @@ const Register = () => {
             <div className="flex flex-col">
               <label className="font-bold text-base md:text-lg">Username</label>
               <input
-                className="p-2 border border-gray-400 rounded-md"
+                className="p-2 border border-gray-400 rounded-md dark:bg-slate-800"
                 id="username"
                 name="username"
                 type="text"
@@ -165,7 +165,7 @@ const Register = () => {
             <div className="flex flex-col">
               <label className="font-bold text-base md:text-lg">Gender</label>
               <select
-                className="p-2 border border-gray-400 rounded-md"
+                className="p-2 border border-gray-400 rounded-md dark:bg-slate-800"
                 value={gender}
                 onChange={(e) => setGender(e.target.value)}
                 required
@@ -182,7 +182,7 @@ const Register = () => {
                 Date of Birth
               </label>
               <input
-                className="p-2 border border-gray-400 rounded-md"
+                className="p-2 border border-gray-400 rounded-md dark:bg-slate-800"
                 id="dateOfBirth"
                 name="dateOfBirth"
                 type="date"
