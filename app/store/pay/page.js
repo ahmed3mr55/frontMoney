@@ -110,7 +110,7 @@ const Page = () => {
             <input
               value={cardNumber}
               onChange={(e) => setCardNumber(e.target.value)}
-              className="p-1 rounded-md"
+              className="p-1 rounded-md dark:bg-gray-900"
               type="number"
               placeholder="1234 5678 9012 3456"
             />
@@ -121,7 +121,7 @@ const Page = () => {
               <input
                 value={cvv}
                 onChange={(e) => setCvv(e.target.value)}
-                className="p-1 rounded-md"
+                className="p-1 rounded-md dark:bg-gray-900"
                 type="number"
                 placeholder="123"
               />
@@ -131,9 +131,10 @@ const Page = () => {
               <input
                 value={expiryDate}
                 onChange={(e) => setExpiryDate(e.target.value)}
-                className="p-1 rounded-md w-full"
+                className="p-1 rounded-md w-full dark:bg-gray-900"
                 type="text"
                 placeholder="MM/YY"
+                maxLength={5}
               />
             </div>
           </div>
@@ -143,7 +144,7 @@ const Page = () => {
               <input
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="p-1 rounded-md w-28"
+                className="p-1 rounded-md w-28 dark:bg-gray-900"
                 type="number"
                 placeholder="0.00 EGP"
               />
@@ -154,9 +155,10 @@ const Page = () => {
                 <input
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
-                  className="p-1 rounded-md w-28"
+                  className="p-1 rounded-md w-28 dark:bg-gray-900"
                   type="text"
                   placeholder="1234"
+                  maxLength={4}
                 />
                 <button
                   onClick={handleSendOtp}

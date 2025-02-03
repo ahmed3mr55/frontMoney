@@ -22,8 +22,8 @@ const ResetPasswordPage = async ({ params }) => {
 
     return (
       <div className="flex items-center justify-center">
-        <div className="bg-white mt-20 p-6 rounded-2xl shadow-lg max-w-sm w-full">
-          <h3 className="text-xl font-bold text-gray-800 mb-4">
+        <div className="bg-white dark:bg-gray-800 mt-20 p-6 rounded-2xl shadow-lg max-w-sm w-full">
+          <h3 className="text-xl font-bold text-gray-800 mb-4 dark:text-white">
             Reset Password for {userData.email}
           </h3>
           <form
@@ -32,25 +32,25 @@ const ResetPasswordPage = async ({ params }) => {
             className="flex flex-col gap-4"
           >
             <div>
-              <label htmlFor="password" className="text-sm text-gray-600">
+              <label htmlFor="password" className="text-sm text-gray-600 dark:text-white">
                 New Password
               </label>
               <input
-                type="password"
+                type="text"
                 name="password"
                 id="password"
                 placeholder="Enter your new password"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm dark:bg-gray-700 dark:text-white"
               />
-              <label className="text-sm text-gray-600" htmlFor="confirmPassword">Confirm Password</label>
+              <label className="text-sm text-gray-600 dark:text-white" htmlFor="confirmPassword">Confirm Password</label>
               <input
-                type="password"
+                type="text"
                 name="confirmPassword"
                 id="confirmPassword"
                 placeholder="Confirm your new password"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm dark:bg-gray-700 dark:text-white"
               />
             </div>
             <button

@@ -8,13 +8,14 @@ const page = () => {
       window.location.href = "/auth/login";
     }, 3000);
   });
+
   return (
     <div className="flex items-center justify-center">
-      <div className=" mt-20 text-center bg-white p-6 rounded-2xl shadow-lg max-w-sm w-full">
-        <h3 className="text-xl font-bold text-gray-800 mb-4">
+      <div className=" mt-20 text-center bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg max-w-sm w-full">
+        <h3 className="text-xl font-bold text-gray-800 mb-4 dark:text-white">
           You have successfully changed your password!
         </h3>
-        <p className="text-sm text-gray-600 mb-4">
+        <p className="text-sm text-gray-600 mb-4 dark:text-white">
           Please click the button below to log in to your account.
         </p>
         <a
