@@ -16,7 +16,9 @@ const Page = () => {
       <Check/>
       <Slider/>
       <WinDad/>
+      <div className="">
       <Users/>
+      </div>
     </div>
   )
 };
