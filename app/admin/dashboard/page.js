@@ -7,6 +7,8 @@ import Check from "../Components/checkAdmin/Check";
 import Deposit from "../Components/deposit/Deposit";
 import Slider from "../Components/slider/Slider";
 import WinDad from "../Components/slider/Operations/WinDad";
+import Users from "../Components/users/Users";
+import Update from "../Components/users/update/Update";
 
 const Page = () => {
   return (
@@ -14,6 +16,7 @@ const Page = () => {
       <Check/>
       <Slider/>
       <WinDad/>
+      <Users/>
     </div>
   )
 };
