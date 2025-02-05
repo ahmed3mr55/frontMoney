@@ -61,8 +61,8 @@ const Page = () => {
           },
           body: JSON.stringify({
             otp,
-            cardNumber: Number(cardNumber),
-            cvv: Number(cvv),
+            cardNumber: cardNumber,
+            cvv: cvv,
             expiryDate,
             amount: Number(amount),
           }),
@@ -90,6 +90,7 @@ const Page = () => {
         setError("");
         setSuccess("");
       }, 3000);
+      return () => clearTimeout(timer);
     }
   });
 
@@ -111,7 +112,7 @@ const Page = () => {
               value={cardNumber}
               onChange={(e) => setCardNumber(e.target.value)}
               className="p-1 rounded-md dark:bg-gray-900"
-              type="number"
+              type="text"
               placeholder="1234 5678 9012 3456"
             />
           </div>
@@ -122,7 +123,7 @@ const Page = () => {
                 value={cvv}
                 onChange={(e) => setCvv(e.target.value)}
                 className="p-1 rounded-md dark:bg-gray-900"
-                type="number"
+                type="text"
                 placeholder="123"
               />
             </div>
