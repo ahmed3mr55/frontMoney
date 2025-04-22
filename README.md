@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-Wallet System
 
-## Getting Started
+> **An integrated platform to facilitate secure peer-to-peer financial transactions.**
 
-First, run the development server:
+## 🛠️ Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Frontend:** Next.js, Tailwind CSS  
+- **Backend:** Express.js  
+- **Database:** MongoDB (Mongoose)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Overview
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+E-Wallet System is a comprehensive solution designed to simplify financial transactions between users. With an intuitive interface and robust security measures, users can transfer funds, manage virtual cards, and monitor activities with ease and transparency.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🔑 Features
 
-To learn more about Next.js, take a look at the following resources:
+### 1. Financial Transfers
+- Transfer any amount to another user's account.
+- View full transaction history with details (date, amount, parties involved).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. Visa Services
+- Create and link a virtual card to the user account.
+- Activate, deactivate, or delete existing cards.
+- Issue new cards with customizable details.
+- Support for external purchases (requires third-party integration).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. Security & Protection
+- Fraud prevention mechanisms built to minimize risks.
+- Email notifications for every transaction, sent to both sender and recipient.
+- Secure login system using email/password authentication.
+- Password recovery via "Forgot Password" flow with email-based reset.
+- Login alerts containing timestamp, IP address, and approximate geolocation.
 
-## Deploy on Vercel
+### 4. Admin Dashboard
+- Manage user accounts (view, edit, delete).
+- Suspend or ban accounts under suspicious activity.
+- Track all platform activities and transactions.
+- Assign admin roles and permissions.
+- Emergency fund adjustments (credit or debit user balances).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ⚙️ Installation & Setup
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/ahmed3mr55/backMoney
+   cd e-wallet-system
